@@ -1,6 +1,18 @@
 {
+  "/_not-found": "app/_not-found.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/integrations/quickbooks/page": "app/integrations/quickbooks/page.js",
+  "/integrations/excel/page": "app/integrations/excel/page.js",
+  "/integrations/sap/page": "app/integrations/sap/page.js",
+  "/integrations/stripe/page": "app/integrations/stripe/page.js",
   "/page": "app/page.js",
+  "/integrations/xero/page": "app/integrations/xero/page.js",
   "/integrations/page": "app/integrations/page.js",
-  "/expenses/page": "app/expenses/page.js"
+  "/auth/login/page": "app/auth/login/page.js",
+  "/test-auth/page": "app/test-auth/page.js",
+  "/auth/error/page": "app/auth/error/page.js",
+  "/auth/register-success/page": "app/auth/register-success/page.js",
+  "/auth/register/page": "app/auth/register/page.js",
+  "/expenses/page": "app/expenses/page.js",
+  "/expenses/[id]/page": "app/expenses/[id]/page.js"
 }

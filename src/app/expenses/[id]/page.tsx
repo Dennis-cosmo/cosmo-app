@@ -9,6 +9,12 @@ interface ExpensePageProps {
   };
 }
 
+// Función necesaria para exportación estática
+export async function generateStaticParams() {
+  // Para demo, generamos algunos IDs estáticos
+  return [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "demo" }];
+}
+
 export default async function ExpenseDetailPage({ params }: ExpensePageProps) {
   const session = await getServerSession(authOptions);
 

@@ -1,80 +1,58 @@
-import NextAuth from "next-auth";
-import { NextAuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import z from "zod";
 
-export const authOptions: NextAuthOptions = {
+// Esquema de validación para las credenciales
+const credentialsSchema = z.object({
+  email: z.string().email("Email inválido"),
+  password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
+});
+
+// Definimos las opciones de autenticación
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
+      id: "credentials",
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          console.error("Credenciales incompletas:", {
-            email: !!credentials?.email,
-            password: !!credentials?.password,
-          });
-          return null;
-        }
-
         try {
-          console.log(`Intentando login para: ${credentials.email}`);
-          console.log(
-            `URL de la API: ${process.env.NEXT_PUBLIC_API_URL}/auth/login`
-          );
+          // Validamos las credenciales con zod
+          const parsedCredentials = credentialsSchema.safeParse(credentials);
 
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                email: credentials.email,
-                password: credentials.password,
-              }),
-            }
-          );
-
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error("Login failed:", {
-              status: response.status,
-              statusText: response.statusText,
-              body: errorText,
-            });
-            return null;
+          if (!parsedCredentials.success) {
+            throw new Error("Credenciales inválidas");
           }
 
-          const data = await response.json();
-          console.log("Login exitoso:", {
-            userId: data.user?.id,
-            email: data.user?.email,
-            tokenReceived: !!data.accessToken,
-          });
+          const { email, password } = parsedCredentials.data;
 
-          if (data && data.accessToken) {
+          // Para GitHub Pages (sin backend), solo credenciales de demo
+          if (email === "demo@cosmo.com" && password === "demo123456") {
             return {
-              id: data.user.id,
-              email: data.user.email,
-              name: `${data.user.firstName} ${data.user.lastName}`,
-              firstName: data.user.firstName,
-              lastName: data.user.lastName,
-              isAdmin: data.user.isAdmin,
-              companyName: data.user.companyName,
-              onboardingCompleted: data.user.onboardingCompleted,
-              accessToken: data.accessToken,
+              id: "demo-user",
+              email: "demo@cosmo.com",
+              name: "Demo User",
+              firstName: "Demo",
+              lastName: "User",
+              isAdmin: false,
+              companyName: "Demo Company",
+              onboardingCompleted: true,
+              accessToken: "demo-token",
             };
           }
 
-          console.error("Datos de respuesta incompletos:", data);
-          return null;
+          throw new Error(
+            "Credenciales inválidas. Use demo@cosmo.com / demo123456"
+          );
         } catch (error) {
-          console.error("Auth error:", error);
-          return null;
+          console.error("Error en la autenticación:", error);
+          if (error instanceof Error) {
+            throw new Error(error.message);
+          }
+          throw new Error("Error inesperado en la autenticación");
         }
       },
     }),
@@ -96,6 +74,19 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token) {
+        if (!session.user) {
+          session.user = {
+            id: "",
+            email: "",
+            name: "",
+            firstName: "",
+            lastName: "",
+            isAdmin: false,
+            companyName: "",
+            onboardingCompleted: false,
+          };
+        }
+
         session.user.id = token.id as string;
         session.user.email = token.email as string;
         session.user.name = token.name as string;
@@ -111,14 +102,14 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/auth/login",
-    signOut: "/",
+    signOut: "/auth/logout",
     error: "/auth/error",
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 días
+    maxAge: 24 * 60 * 60, // 24 horas
   },
   debug: process.env.NODE_ENV === "development",
+  secret:
+    process.env.NEXTAUTH_SECRET || "desarrollo_nextauth_secret_key_cosmo_app",
 };
-
-export default NextAuth(authOptions);

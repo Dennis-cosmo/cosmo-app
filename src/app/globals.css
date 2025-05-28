@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 45, 45, 45;
+  --background-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 10, 10, 10;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-cosmo-500 dark:text-pure-white;
+  }
+  h2 {
+    @apply text-3xl font-semibold text-cosmo-500 dark:text-pure-white;
+  }
+  h3 {
+    @apply text-2xl font-semibold text-cosmo-500 dark:text-pure-white;
+  }
+  h4 {
+    @apply text-xl font-semibold text-cosmo-500 dark:text-pure-white;
+  }
+  p {
+    @apply text-cosmo-500 dark:text-white/90;
+  }
+  a {
+    @apply text-eco-green hover:text-lime-accent transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Botones */
+  .btn-primary {
+    @apply bg-eco-green hover:bg-lime-accent text-cosmo-500 font-medium py-2 px-4 rounded transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply border border-cosmo-500 text-cosmo-500 dark:text-pure-white dark:border-pure-white hover:bg-cosmo-300 dark:hover:bg-cosmo-400/30 font-medium py-2 px-4 rounded transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply border border-eco-green text-eco-green hover:bg-eco-green hover:text-pure-white font-medium py-2 px-4 rounded transition-colors duration-200;
+  }
+
+  /* Cards y contenedores */
+  .card {
+    @apply bg-pure-white dark:bg-cosmo-400 rounded-lg shadow-card p-6 transition-shadow duration-200;
+  }
+
+  .card-hover {
+    @apply bg-pure-white dark:bg-cosmo-400 rounded-lg shadow-card p-6 hover:shadow-lg transition-all duration-200;
+  }
+
+  .container-section {
+    @apply bg-cosmo-300 dark:bg-cosmo-500 rounded-lg p-8 my-8;
+  }
+
+  /* Header y componentes de navegación */
+  .header {
+    @apply bg-cosmo-500 text-pure-white p-4 flex justify-between items-center sticky top-0 z-50;
+  }
+
+  .nav-link {
+    @apply text-pure-white hover:text-lime-accent px-4 py-2 transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-lime-accent border-b-2 border-lime-accent px-4 py-2;
+  }
+
+  /* Form Elements */
+  .input {
+    @apply bg-pure-white dark:bg-cosmo-400 border border-white/10 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-cosmo-500 dark:text-white/90 text-sm font-medium mb-2;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-lime-accent text-cosmo-500;
+  }
+
+  .badge-outline {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-lime-accent text-lime-accent;
+  }
+
+  /* Tables */
+  .table-container {
+    @apply overflow-x-auto rounded-lg border border-white/10 dark:border-cosmo-400;
+  }
+
+  .table {
+    @apply min-w-full divide-y divide-white/10 dark:divide-cosmo-400;
+  }
+
+  .table-header {
+    @apply bg-cosmo-300 dark:bg-cosmo-500 text-left text-xs font-medium text-cosmo-500 dark:text-white/90 uppercase tracking-wider py-3 px-4;
+  }
+
+  .table-row {
+    @apply hover:bg-cosmo-300/50 dark:hover:bg-cosmo-400/50;
+  }
+
+  .table-cell {
+    @apply py-3 px-4 whitespace-nowrap text-sm text-cosmo-500 dark:text-white/90;
+  }
+}

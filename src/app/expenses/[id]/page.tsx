@@ -1,6 +1,3 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../../lib/auth";
 import Link from "next/link";
 
 interface ExpensePageProps {
@@ -15,13 +12,7 @@ export async function generateStaticParams() {
   return [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "demo" }];
 }
 
-export default async function ExpenseDetailPage({ params }: ExpensePageProps) {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect("/auth/login");
-  }
-
+export default function ExpenseDetailPage({ params }: ExpensePageProps) {
   const { id } = params;
 
   // En una implementación real, aquí consultaríamos el gasto desde la API

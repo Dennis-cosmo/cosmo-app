@@ -10,7 +10,7 @@ export default function Home() {
   const [showToast, setShowToast] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Handler para el envío del formulario
+  // Handler para el envío del formulario (sin fetch)
   const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLeadStatus("loading");
@@ -22,13 +22,13 @@ export default function Home() {
       contactName: form.contactName.value,
       message: form.message.value,
     };
+
+    // Simular envío exitoso sin hacer fetch real
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("No se pudo enviar el formulario");
+      // Simular delay de red
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      console.log("Datos del formulario:", data);
       setLeadStatus("success");
       setShowToast(true);
       form.reset();

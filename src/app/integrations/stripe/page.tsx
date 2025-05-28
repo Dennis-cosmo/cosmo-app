@@ -1,202 +1,131 @@
 import Link from "next/link";
 
-export default function StripeIntegrationPage() {
+export default function StripePage() {
   return (
-    <main className="py-6 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-deep-space min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-deep-space via-cosmo-900 to-cosmo-800 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <Link
-            href="/integrations"
-            className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 mb-4"
-          >
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Volver a Integraciones
-          </Link>
-          <div className="flex items-center">
-            <span className="text-4xl mr-4">💳</span>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Stripe Integration
-              </h1>
-              <p className="text-gray-500 dark:text-gray-400">
-                Conecta tu cuenta de Stripe para analizar transacciones y
-                generar reportes ESG
-              </p>
-            </div>
-          </div>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Integración con Stripe
+          </h1>
+          <p className="text-xl text-gray-300">
+            Conecta tu cuenta de Stripe para importar automáticamente tus
+            transacciones financieras
+          </p>
         </div>
 
-        {/* Status */}
-        <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8">
-          <div className="flex">
-            <div className="flex-shrink-0">
+        <div className="bg-cosmo-800/50 backdrop-blur-sm border border-white/10 rounded-xl p-8">
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
               <svg
-                className="h-5 w-5 text-blue-400"
+                className="w-8 h-8 text-white"
                 fill="currentColor"
-                viewBox="0 0 20 20"
+                viewBox="0 0 24 24"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                  clipRule="evenodd"
-                />
+                <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" />
               </svg>
             </div>
-            <div className="ml-3">
-              <h3 className="text-sm font-medium text-blue-800 dark:text-blue-300">
-                Integración de Pagos
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Beneficios de la integración
               </h3>
-              <div className="mt-2 text-sm text-blue-700 dark:text-blue-200">
-                <p>
-                  Analiza el impacto ambiental de tus transacciones de pago y
-                  mejora tu puntuación ESG.
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-eco-green mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Importación automática de transacciones
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-eco-green mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Clasificación automática de gastos
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-eco-green mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Cálculo de impacto ambiental
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-eco-green mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Reportes de sostenibilidad automáticos
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Estado de la conexión
+              </h3>
+              <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-4 mb-6">
+                <div className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-yellow-500 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-yellow-500 font-medium">
+                    No conectado
+                  </span>
+                </div>
+                <p className="text-gray-300 mt-2 text-sm">
+                  Tu cuenta de Stripe no está conectada. Conecta para comenzar a
+                  importar transacciones.
                 </p>
               </div>
+
+              <button className="w-full bg-eco-green hover:bg-lime-accent text-cosmo-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                Conectar con Stripe
+              </button>
             </div>
           </div>
-        </div>
-
-        {/* Integration Details */}
-        <div className="bg-white dark:bg-cosmo-800 shadow rounded-lg mb-8">
-          <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-              ¿Qué hace esta integración?
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                  Datos de transacciones:
-                </h4>
-                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                  <li>• Historial de pagos</li>
-                  <li>• Información de clientes</li>
-                  <li>• Categorías de productos/servicios</li>
-                  <li>• Montos y frecuencias</li>
-                  <li>• Métodos de pago</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                  Análisis de sostenibilidad:
-                </h4>
-                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                  <li>• Huella de carbono por transacción</li>
-                  <li>• Impacto ambiental de productos vendidos</li>
-                  <li>• Métricas de consumo responsable</li>
-                  <li>• Tendencias de sostenibilidad de clientes</li>
-                  <li>• Reportes automáticos ESG</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Setup Steps */}
-        <div className="bg-white dark:bg-cosmo-800 shadow rounded-lg mb-8">
-          <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-6">
-              Pasos de configuración
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-6 h-6 bg-eco-green rounded-full">
-                    <span className="text-xs font-medium text-cosmo-500">
-                      1
-                    </span>
-                  </div>
-                </div>
-                <div className="ml-3">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-                    Conectar con Stripe
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Autoriza el acceso a tu cuenta de Stripe usando OAuth
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-6 h-6 bg-eco-green rounded-full">
-                    <span className="text-xs font-medium text-cosmo-500">
-                      2
-                    </span>
-                  </div>
-                </div>
-                <div className="ml-3">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-                    Configurar webhooks
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Configuramos webhooks para recibir actualizaciones en tiempo
-                    real
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-6 h-6 bg-eco-green rounded-full">
-                    <span className="text-xs font-medium text-cosmo-500">
-                      3
-                    </span>
-                  </div>
-                </div>
-                <div className="ml-3">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-                    Análisis inicial
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Analizamos tus transacciones históricas para establecer
-                    baseline ESG
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex justify-between">
-          <Link
-            href="/integrations"
-            className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-cosmo-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-white bg-white dark:bg-cosmo-800 hover:bg-gray-50 dark:hover:bg-cosmo-700"
-          >
-            Cancelar
-          </Link>
-          <button
-            type="button"
-            className="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-black bg-eco-green hover:bg-eco-green/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-eco-green"
-          >
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-              />
-            </svg>
-            Conectar con Stripe
-          </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
